@@ -1,0 +1,9 @@
+<div style="margin:auto; width: 30%; margin-top: 20px;">
+    <% if(locals.errors) { %> 
+
+    <% for (let [key, value] of Object.entries(locals.errors)) { %>
+        <div class="alert alert-danger"><%= value %></div>
+    <% } %>
+
+    <% } %>
+</div>

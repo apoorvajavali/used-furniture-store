@@ -1,0 +1,42 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+    <% if(orders.length > 0) {
+     for(var i=0; i<orders.length; i++) { %>
+    <div class="card">
+        <div class="card-header">
+            <p>Order Number:  <%= orders[i]._id %></p>
+            <p>Order Date:  <%= orders[i].date.toDateString() %></p>
+        </div>
+        <div class="card-body">
+            <!-- Order Summary -->
+            <table class="table shopping-summery">
+                <tbody>
+                <% var products = orders[i].products
+                if(products) {
+                for(var j=0; j<products.length; j++) { %>
+                    <tr>
+                        <td class="image" data-title="No"><img src="/<%= products[j].image %>" alt="#"></td>
+                        <td class="product-des" data-title="Description">
+                            <p class="product-name"><a href="#"><%= products[j].name %></a></p>
+                            <p class="product-des"><%= products[j].description %></p>
+                        </td>
+                        <td class="price" data-title="Price"><span><%= products[j].price %> </span></td>
+                    </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+            </table>
+            <!--/ End Order Summary -->
+        </div>
+    </div>
+    <% } %>
+    <% } else { %>
+        <h4>No Orders Yet!</h4>
+        <br>
+        <a style="color: white;" href="/products" class="btn animate">Continue Shopping</a>
+    <% } %>
+
+</div>
+
+<%- include ('partials/footer') %>

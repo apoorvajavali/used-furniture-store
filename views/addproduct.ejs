@@ -1,0 +1,84 @@
+<%- include ('partials/header') %>
+	<!-- Start Checkout -->
+    <section class="shop checkout section">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-8 col-12">
+                    <div class="checkout-form">
+                        <% if (locals.id){ %>
+                            <h2>Edit Product</h2>
+                        <% } else { %>
+                            <h2>Add New Product</h2>
+                        <% } %>
+                        <p></p>
+                        <!-- Form -->
+                        <form class="form" 
+                            method="post"
+                            <% if (locals.id){ %>
+                                action="/products/<%= id %>/edit-product"
+                            <% } else { %>
+                                action="/products/add-product"
+                            <% } %>
+                            enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label>Name<span>*</span></label>
+                                        <input <% if(locals.name) { %> value="<%= name %>" <% } %> type="text" name="name" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label>Description<span>*</span></label>
+                                        <input <% if(locals.description) { %> value="<%= description %>" <% } %> type="text" name="description" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label>Category<span>*</span></label>
+                                        <select class="form-control" name="category">
+                                            <option value="1">Living Room</option>
+                                            <option value="2">Kitchen and Dining</option>
+                                            <option value="3">Bedroom</option>
+                                            <option value="4">Office</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label>Price<span>*</span></label>
+                                        <input <% if(locals.price) { %> value="<%= price %>" <% } %> type="number" name="price" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label>Image<span>*</span></label>
+                                    <input style="height: 80px; padding: 10px;" <% if(locals.image) { %> value="<%= image %>" <% } %> accept="image/*" type="file" name="image" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12"></div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="single-widget get-button">
+                                        <div class="content" style="margin-top: 30px;">
+                                            <div class="button">
+                                                <% if (locals.id) { %>
+                                                    <button type="submit" class="btn">update</button>
+                                                <% } else { %>
+                                                    <button type="submit" class="btn">add</button>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--/ End Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Checkout -->
+
+
+<%- include ('partials/footer') %>

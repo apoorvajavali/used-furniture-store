@@ -1,0 +1,31 @@
+<%- include ('partials/header') %>
+<div class="row no-gutters">
+
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <!-- Product Slider -->
+            <div class="product-gallery">
+                <div class="single-slider">
+                    <img style="height: 550px; width: 600px;" src="/<%= product.image %>" alt="#">
+                </div>
+            </div>
+        <!-- End Product slider -->
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="quickview-content">
+            <h2><%= product.name %></h2>
+            <h3>$<%= product.price %></h3>
+            <div class="quickview-peragraph">
+                <p><%= product.description %></p>
+            </div><br>
+            <div class="add-to-cart">
+                <% if (product.available) { %>
+                    <a href="/products/<%= product._id %>/add-to-cart" class="btn">Add to cart</a>
+                <% } else { %>
+                <p>Product sold</p>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('partials/footer') %>

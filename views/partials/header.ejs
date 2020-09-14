@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+    <title>Used Furniture Store</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+	<!-- Web Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	
+	<!-- StyleSheet -->
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.min.css">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome.css">
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+	<!-- Themify Icons -->
+    <link rel="stylesheet" href="/css/themify-icons.css">
+	<!-- Nice Select CSS -->
+    <link rel="stylesheet" href="/css/niceselect.css">
+	<!-- Animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+	<!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="/css/flex-slider.min.css">
+	<!-- Owl Carousel -->
+    <link rel="stylesheet" href="/css/owl-carousel.css">
+	<!-- Slicknav -->
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+	
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style>
+		.myButton {
+			background-color:#0a0504d0;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:17px;
+			padding:13px 19px;
+			text-decoration:none;
+			height: 40px;
+		}
+		.myButton:hover {
+			background-color:#ca7729;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
+		.searchbtn {
+			height: 40px;
+		}
+	</style>
+</head>
+
+<body class="js">
+	
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+	
+	
+<!-- Header -->
+<header class="header shop">
+	<div class="header-inner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2 col-md-2 col-12">
+					<!-- Logo -->
+					<div class="logo">
+						<a href="/products">
+							<img src="/images/logo.png">
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-7 col-12">
+					<div class="search-bar-top" style="padding: 0%;">
+						<form action="/products" method="GET">
+							<div class="row">
+								<div class="col-3">
+									<select name="category">
+										<% var all = ""; var lr = ""; var kd = ""; var bd = ""; var of = ""; %>
+										<% if(locals.category) { 
+										all = category === "0" ? "selected" : "";
+										lr = category === "1" ? "selected" : "";
+										kd = category === "2" ? "selected" : "";
+										bd = category === "3" ? "selected" : "";
+										of = category === "4" ? "selected" : ""  } %> 
+										<option value="0" <%= all %> >All Category</option>
+										<option value="1" <%= lr %> >Living Room</option>
+										<option value="2" <%= kd %> >Kitchen/Dining</option>
+										<option value="3" <%= bd %> >Bedroom</option>
+										<option value="4" <%= of %> >Office</option>
+									</select>
+								</div>
+								<div class="col-6">
+									<input name="search" class="searchbtn form-control" type="text"
+									<% if(locals.query) { %> value=<%= query %> <% } %> >
+								</div>
+								<div class="col-2">
+									<button type="submit" class="myButton"><i class="ti-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-3 col-12">
+					<div class="right-bar">
+						<!-- Search Form -->
+						<div class="sinlge-bar shopping">
+							<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+							<div class="shopping-item" style="width: 200px;">
+								
+								<% if (user) { %>
+									<ul class="shopping-list">
+										<li>
+											<h4><a href="#">My Account</a></h4>
+										</li>
+										<li>
+											<h4><a href="/products/view-orders">My Orders</a></h4>
+										</li>
+									</ul>
+									<div class="bottom">
+										<a href="/users/logout" class="btn animate">LOGOUT</a>
+									</div>
+								<% } else { %>
+									<div class="bottom">
+										<a href="/users/login" class="btn animate">LOGIN</a>
+										<a href="/users/register" class="btn animate">SIGNUP</a>
+									</div>
+								<% } %>
+							</div>
+						</div>
+						<div class="sinlge-bar shopping">
+							<a href="/products/cart" class="single-icon">
+								<i class="ti-bag"></i> 
+								<% if(locals.cart) { %> <span class="total-count"><%= cart.length %></span> <% } %>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--/ End Header -->
+
+	<%- include ('message'); %>
+	<%- include ('errors'); %>
+	
+	

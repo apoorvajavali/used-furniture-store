@@ -1,0 +1,62 @@
+<%- include ('partials/header') %>
+
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Shopping Summery -->
+                <% if(locals.cart && locals.cart.length > 0) { %> 
+                <table class="table shopping-summery">
+                    <tbody>
+                        <% var total = 0 %>
+                        <% for(var i=0; i<cart.length; i++) { %>
+                        <% total += parseFloat(cart[i].price) %>
+                        <tr>
+                            <td class="image" data-title="No"><img src="/<%= cart[i].image %>" alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a href="/products/<%= cart[i]._id %>"><%= cart[i].name %></a></p>
+                                <p class="product-des"><%= cart[i].description %></p>
+                            </td>
+                            <td class="price" data-title="Price"><span>$<%= cart[i].price %> </span></td>
+                            <td class="action" data-title="Remove"><a href="/products/<%= cart[i]._id %>/remove-from-cart"><i class="ti-trash remove-icon"></i></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <!--/ End Shopping Summery -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount" >
+                    <div class="row">
+                        <div class="col-lg-4 col-md-7 col-12">
+                            <div class="right">
+                                <ul>
+                                    <li>Cart Subtotal<span>$<%= total %></span></li>
+                                    <li>Shipping<span>Free</span></li>
+                                    <li class="last">You Pay<span>$<%= total %></span></li>
+                                </ul>
+                                <div class="button5">
+                                    <a href="/products/cart/place-order" class="btn">Checkout</a>
+                                    <a href="/products" class="btn">Continue shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
+<% } else { %>
+    <h4>Cart Empty!</h4>
+        <br>
+        <a style="color: white;" href="/products" class="btn animate">Continue Shopping</a>
+<% } %>
+<!--/ End Shopping Cart -->
+
+<%- include ('partials/footer') %>

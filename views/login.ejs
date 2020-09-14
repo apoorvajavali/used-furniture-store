@@ -1,0 +1,43 @@
+<%- include ('partials/header') %>
+
+	<!-- Start Checkout -->
+    <section class="shop checkout section">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-4 col-12" style="margin: auto;">
+                    <div class="order-details">
+                        <!-- Form -->
+                        <form class="form" method="post" action="/users/login">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group" style="margin: 0px 35px;">
+                                        <label>Email Address<span>*</span></label>
+                                        <input <% if(locals.email) { %> value="<%= email %>" <% } %> type="email" name="email" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group" style="margin: 0px 35px;">
+                                        <label>Password<span>*</span></label>
+                                        <input <% if(locals.password) { %> value="<%= password %>" <% } %> type="password" name="password" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="single-widget get-button">
+                                        <div class="content" style="margin-top: 30px;">
+                                            <div class="button">
+                                                <button type="submit" class="btn">login</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--/ End Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Checkout -->
+
+<%- include ('partials/footer') %>

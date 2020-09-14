@@ -1,0 +1,125 @@
+<%- include ('partials/header') %>
+
+<!-- Start Product Area -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="product-info">
+				<div class="tab-content" id="myTabContent">
+					<% if (user && user.isAdmin) { %>
+					<a style="color: white;" href="/products/add-product" class="btn animate">Add new product</a>
+					<% } %>
+					<!-- Start Single Tab -->
+					<div class="tab-pane fade show active" id="man" role="tabpanel">
+						<div class="tab-single">
+							<div class="row">
+								<% if (products.length > 0) { %>
+								<% for ( var i = 0; i < products.length; i++ ) { %>
+								<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="/products/<%= products[i]._id %>">
+												<img style="height: 250px; width: 300px;" class="default-img" src="<%= products[i].image %>" alt="#">
+												<img style="height: 250px; width: 300px;" class="hover-img" src="<%= products[i].image %>" alt="#">
+											</a>
+											<div class="button-head">
+												<div class="product-action">
+													<% if (user && user.isAdmin) { %>
+														<a title="Edit" href="/products/<%= products[i]._id %>/edit-product"><i class=" ti-pencil "></i><span>Edit</span></a>
+														<a title="Delete" href="/products/<%= products[i]._id %>/delete-product"><i class=" ti-trash "></i><span>Delete</span></a>
+													<% } %>
+												</div>
+												<div class="product-action-2">
+													<% if (products[i].available) { %>
+													<a title="Add to cart" href="/products/<%= products[i]._id %>/add-to-cart">Add to cart</a>
+													<% } else { %>
+													<p>Product sold</p>
+													<% } %>
+												</div>
+											</div>
+										</div>
+										<div class="product-content">
+											<h3><a href="/products/<%= products[i]._id %>"><%= products[i].name %></a></h3>
+											<div class="product-price">
+												<span>$<%= products[i].price %></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<% } %>
+								<% } else { %>
+									<h5>No Products Found</h5>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<!--/ End Single Tab -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="float: right; margin-right: 20px; margin-top: 20px;" class="pagination">
+	<nav aria-label="Page navigation">
+		<ul class="pagination">
+			<li class="page-item <% if(!locals.pagination.previous) { %> disabled  <% } %> ">
+				<a class="page-link" href="<% if(locals.pagination.previous) { %>/products?page= <%= pagination.next %> <% } %>"">
+					Previous
+				</a>
+			</li>
+			<li class="page-item <% if(!locals.pagination.next) { %> disabled  <% } %>">
+				<a class="page-link" href="<% if(locals.pagination.next) { %>/products?page= <%= pagination.next %> <% } %>">
+					Next
+				</a>
+			</li>
+		</ul>
+		</nav>
+</div>
+<!-- End Product Area -->
+
+<!-- Start Shop Services Area -->
+<section style="margin-top: 80px;" class="shop-services section home">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="ti-rocket"></i>
+					<h4>Free shiping</h4>
+					<p>Orders over $10</p>
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="ti-reload"></i>
+					<h4>Free Return</h4>
+					<p>Within 30 days returns</p>
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="ti-lock"></i>
+					<h4>Secure Payment</h4>
+					<p>100% secure payment</p>
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="ti-tag"></i>
+					<h4>Best Peice</h4>
+					<p>Guaranteed price</p>
+				</div>
+				<!-- End Single Service -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Shop Services Area -->
+
+<%- include ('partials/footer') %>
